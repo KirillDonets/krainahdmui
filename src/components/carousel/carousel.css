@@ -1,0 +1,21 @@
+.carousel {
+  display: flex;
+  overflow: hidden;
+  position: sticky; /* Сделать карусель зафиксированной */
+  top: 60px; /* Отступ сверху равный высоте хедера */
+  left: 0;
+  right: 0;
+  z-index: 100; /* Установить z-index выше, чем у хедера */
+  border-radius: 20px;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}  
+
+.carousel img {
+  animation: slide 15s linear infinite;
+  width: 200px;
+  height: auto;
+}

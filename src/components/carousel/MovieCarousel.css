@@ -1,0 +1,39 @@
+.carouselRoot {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carouselControls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.carouselButton {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.carouselContainer {
+  overflow-x: auto; /* Горизонтальная прокрутка */
+  overflow-y: hidden; /* Скрытие вертикальной прокрутки */
+  white-space: nowrap; /* Предотвращение переноса элементов на новую строку */
+}
+
+.carouselGrid {
+  display: inline-flex; /* Используйте inline-flex для расположения элементов в одну линию */
+}
+
+.carouselItem {
+  flex: 0 0 auto;
+}
+
+.carouselSlide {
+  width: 250px; /* Ширина слайда */
+  margin-right: 10px; /* Отступ между слайдами */
+}
+
+.carouselImage {
+  width: 100%;
+  height: auto;
+}

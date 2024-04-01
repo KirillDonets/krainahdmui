@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1A315B;
+    margin: 10px;
+    border-radius: 10px;
+    ;
+  }
+  
+  .menuButton {
+    margin-right: 16px; /* Регулирует расстояние между иконкой меню и краем AppBar */
+  }
+  
+  .searchField {
+    margin-left: auto; /* Располагает поле поиска справа */
+  }
+  
