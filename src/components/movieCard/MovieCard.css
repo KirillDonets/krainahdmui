@@ -1,0 +1,13 @@
+.movieCard {
+    width: 300px;
+    margin: 20px;
+  }
+  
+  .movieImage {
+    cursor: pointer;
+  }
+  
+  .movieContent {
+    padding: 20px;
+  }
+  

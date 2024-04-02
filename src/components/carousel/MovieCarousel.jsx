@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Grid, Card, CardContent, Typography, Button } from '@mui/material';
-import './MovieCarousel.css'; // Импортируйте ваши стили CSS
+import './MovieCarousel.css';
 import films from '../../data/films';
 
 function MovieCarousel() {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const scrollStep = 250; // Шаг прокрутки (можно изменить по необходимости)
+  const scrollStep = 250;
   const carouselContainerRef = useRef(null);
 
   useEffect(() => {

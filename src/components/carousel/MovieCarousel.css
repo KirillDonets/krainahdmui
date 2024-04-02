@@ -15,13 +15,13 @@
 }
 
 .carouselContainer {
-  overflow-x: auto; /* Горизонтальная прокрутка */
-  overflow-y: hidden; /* Скрытие вертикальной прокрутки */
-  white-space: nowrap; /* Предотвращение переноса элементов на новую строку */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .carouselGrid {
-  display: inline-flex; /* Используйте inline-flex для расположения элементов в одну линию */
+  display: inline-flex;
 }
 
 .carouselItem {
@@ -29,8 +29,8 @@
 }
 
 .carouselSlide {
-  width: 250px; /* Ширина слайда */
-  margin-right: 10px; /* Отступ между слайдами */
+  width: 250px;
+  margin-right: 10px;
 }
 
 .carouselImage {

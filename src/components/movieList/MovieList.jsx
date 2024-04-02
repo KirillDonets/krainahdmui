@@ -1,13 +1,15 @@
 import React from 'react';
-import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material'; // Импорт компонентов Material-UI
+import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
 import films from '../../data/films';
 import './MovieList.css';
+import { Link } from 'react-router-dom';
 
 function MovieList() {
     return (
       <Grid container spacing={3}>
-        {films.map((movie) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
+      {films.map((movie) => (
+        <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
+          <Link to={`/movie/${movie.id}`} className="movieLink">
             <Card>
               <CardActionArea>
                 <CardMedia
@@ -28,9 +30,10 @@ function MovieList() {
                 </CardContent>
               </CardActionArea>
             </Card>
-          </Grid>
-        ))}
-      </Grid>
+          </Link>
+        </Grid>
+      ))}
+    </Grid>
     );
   }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem, Button, TextField } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import logo from './logo.png'; // Импортируем изображение вашего логотипа
-import './Header.css'; // Импортируем CSS файл
+import logo from './logo.png';
+import './Header.css';
 
 const categories = [
   { name: 'Фільми', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Трилер'] },

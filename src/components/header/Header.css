@@ -9,10 +9,10 @@
   }
   
   .menuButton {
-    margin-right: 16px; /* Регулирует расстояние между иконкой меню и краем AppBar */
+    margin-right: 16px;
   }
   
   .searchField {
-    margin-left: auto; /* Располагает поле поиска справа */
+    margin-left: auto;
   }
   
