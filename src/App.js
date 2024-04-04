@@ -14,7 +14,7 @@ function App() {
         <Carousel />
         <Routes>
           <Route path="/" element={<MovieList />} />
-          <Route path="/movie/:id" element={<MovieCardWithParams />} />
+          <Route path="/movie/:slug" element={<MovieCardWithParams />} />
         </Routes>
       </div>
     </Router>

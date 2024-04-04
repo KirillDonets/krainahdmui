@@ -10,7 +10,7 @@ const MovieCard = ({ movie, onImageClick }) => {
                 height="500"
                 image={movie.image}
                 alt={movie.name}
-                className="movieImage" // Добавляем класс для изображения
+                className="movieImage"
                 onClick={() => onImageClick(movie)}
             />
             <CardContent className="movieContent">
