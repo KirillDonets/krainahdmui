@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem, Button, TextField } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import logo from './logo.png';
+import logo from './logo1.png';
 import './Header.css';
 
 const categories = [

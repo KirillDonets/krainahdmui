@@ -11,14 +11,20 @@ function App() {
     <Router>
       <div>
         <Header />
-        <Carousel />
         <Routes>
-          <Route path="/" element={<MovieList />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/movie/:slug" element={<MovieCardWithParams />} />
         </Routes>
       </div>
     </Router>
   );
 }
-
+const HomePage = () => {
+  return (
+    <>
+      <Carousel />
+      <MovieList />
+    </>
+  );
+}
 export default App;
