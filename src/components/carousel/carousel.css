@@ -1,11 +1,8 @@
 .carousel {
   display: flex;
   overflow: hidden;
-  position: sticky;
-  top: 60px;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  position: relative; /* добавлено */
+  z-index: 99; /* уменьшено значение z-index */
   border-radius: 20px;
 }
 

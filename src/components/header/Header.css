@@ -1,12 +1,13 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1A315B;
-    margin: 10px;
-    border-radius: 10px;
-    ;
-  }
+  position: relative;
+  z-index: 1000; /* Установите более высокий z-index */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1A315B;
+  margin: 10px;
+  border-radius: 10px;
+}
   
   .menuButton {
     margin-right: 16px;
@@ -15,4 +16,27 @@
   .searchField {
     margin-left: auto;
   }
+  .searchResultsContainer {
+    position: absolute;
+    top: calc(100% + 8px);
+    width: 100%;
+    background-color: ##1A315B;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .searchResult {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .searchResult:hover {
+    background-color: #b68e8e;
+  }
+  .filmLink {
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    color: inherit; /* Наследуем цвет текста */
+  }
+  
   

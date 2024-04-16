@@ -1,8 +1,9 @@
-import React from 'react';
-import { AppBar, Toolbar, IconButton, Menu, MenuItem, Button, TextField } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import logo from './logo1.png';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Button, TextField, Paper, Menu, MenuItem } from '@mui/material';
+import { Link } from 'react-router-dom';
+import logo from './logo.png';
 import './Header.css';
+import films from '../../data/films';
 
 const categories = [
   { name: 'Фільми', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Трилер'] },
@@ -11,8 +12,10 @@ const categories = [
 ];
 
 function Header() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedCategory, setSelectedCategory] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleMenuClick = (event, category) => {
     setAnchorEl(event.currentTarget);
@@ -23,10 +26,30 @@ function Header() {
     setAnchorEl(null);
   };
 
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearchQuery(value);
+    const results = value ? films.filter(film =>
+      film.name.toLowerCase().includes(value.toLowerCase())
+    ) : [];
+    setSearchResults(results);
+  };
+
+  const handleSearchSubmit = () => {
+    console.log('Выполнить поиск с запросом:', searchQuery);
+  };
+
+  const clearSearchResults = () => {
+    setSearchQuery('');
+    setSearchResults([]);
+  };
+
   return (
     <AppBar position="static">
       <Toolbar className="header">
-        <img src={logo} alt="Логотип" className="logo" /> {/* Ваш логотип */}
+        <Link to="/">
+          <img src={logo} alt="Логотип" className="logo" />
+        </Link>
         {categories.map((category, index) => (
           <div key={index}>
             <Button
@@ -37,19 +60,37 @@ function Header() {
             >
               {category.name}
             </Button>
-            <Menu
-              id="category-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl) && selectedCategory === category}
-              onClose={handleClose}
-            >
-              {category.genres.map((genre, index) => (
-                <MenuItem key={index} onClick={handleClose}>{genre}</MenuItem>
-              ))}
-            </Menu>
           </div>
         ))}
-        <TextField label="Пошук" variant="outlined" size="small" className="searchField" />
+        <Menu
+          id="category-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          {selectedCategory && selectedCategory.genres.map((genre, index) => (
+            <MenuItem key={index} onClick={handleClose}>{genre}</MenuItem>
+          ))}
+        </Menu>
+        <TextField
+          label="Пошук"
+          variant="outlined"
+          size="small"
+          className="searchField"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <Paper className="searchResultsContainer" elevation={3}>
+          {searchResults.length > 0 && (
+            searchResults.map(film => (
+              <div key={film.id} className="searchResult">
+                <Link to={`/movie/${film.id}`} className="filmLink" onClick={clearSearchResults}>
+                  <p>{film.name} ({film.year})</p>
+                </Link>
+              </div>
+            ))
+          )}
+        </Paper>
       </Toolbar>
     </AppBar>
   );
