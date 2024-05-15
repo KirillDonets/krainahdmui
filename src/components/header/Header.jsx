@@ -6,39 +6,50 @@ import './Header.css';
 import films from '../../data/films';
 
 const categories = [
-  { name: 'Фільми', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Трилер'] },
-  { name: 'Серіали', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Триллер'] },
-  { name: 'Мультфільми', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Триллер'] }
+  { name: 'Фільм', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Трилер'] },
+  { name: 'Серіал', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Триллер'] },
+  { name: 'Мультфільм', genres: ['Детектив', 'Містика', 'Мелодрама', 'Бойовик', 'Жахи', 'Фантастика', 'Комедія', 'Історичний', 'Документальний', 'Пригодницький', 'Драма', 'Триллер'] }
 ];
 
-function Header() {
+function Header({ onGenreSelect }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
   const handleMenuClick = (event, category) => {
     setAnchorEl(event.currentTarget);
     setSelectedCategory(category);
+    setSelectedGenre(null);
+    const selectedType = category ? category.name : null;
+    onGenreSelect({ genre: null, type: selectedType });
   };
+  
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleGenreClick = (event, genre) => {
+    event.preventDefault();
+    setSelectedGenre(genre);
+    setAnchorEl(null);
+    const selectedType = selectedCategory ? selectedCategory.name : null;
+    onGenreSelect({ genre, type: selectedType });
   };
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
     setSearchQuery(value);
     const results = value ? films.filter(film =>
-      film.name.toLowerCase().includes(value.toLowerCase())
+      film.name.toLowerCase().includes(value.toLowerCase()) &&
+      (!selectedGenre || film.genre === selectedGenre) &&
+      (!selectedCategory || film.type === selectedCategory.name)
     ) : [];
     setSearchResults(results);
   };
-
-  const handleSearchSubmit = () => {
-    console.log('Выполнить поиск с запросом:', searchQuery);
-  };
-
+  
   const clearSearchResults = () => {
     setSearchQuery('');
     setSearchResults([]);
@@ -69,7 +80,7 @@ function Header() {
           onClose={handleClose}
         >
           {selectedCategory && selectedCategory.genres.map((genre, index) => (
-            <MenuItem key={index} onClick={handleClose}>{genre}</MenuItem>
+            <MenuItem key={index} onClick={(event) => handleGenreClick(event, genre)}>{genre}</MenuItem>
           ))}
         </Menu>
         <TextField
@@ -97,3 +108,4 @@ function Header() {
 }
 
 export default Header;
+

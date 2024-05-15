@@ -21,13 +21,19 @@ const MovieCard = ({ movie, onImageClick }) => {
                             {movie.name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <span className="infoLabel">Год:</span> {movie.year}
+                            <span className="infoLabel">Рік:</span> {movie.year}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <span className="infoLabel">Режиссер:</span> {movie.director}
+                            <span className="infoLabel">Режисер:</span> {movie.director}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <span className="infoLabel">Описание:</span> {movie.description}
+                            <span className="infoLabel">Тип:</span> {movie.type}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            <span className="infoLabel">Жанр:</span> {movie.genre}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            <span className="infoLabel">Сюжет:</span> {movie.description}
                         </Typography>
                     </CardContent>
                 </Grid>

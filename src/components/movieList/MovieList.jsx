@@ -1,24 +1,21 @@
 import React from 'react';
 import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
-import films from '../../data/films';
-import './MovieList.css';
 import { Link } from 'react-router-dom';
+
+
 function generateSlug(name, year) {
-  const slugName = name
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-
+  const slugName = name.toLowerCase().replace(/\s+/g, '-');
   const slugYear = year.toString();
-
   return `${slugName}-${slugYear}`;
 }
 
-function MovieList() {
+function MovieList({ films }) {
+  console.log('Отображаемые фильмы:', films);
+
   return (
     <Grid container spacing={3}>
       {films.map((movie) => {
         const slug = generateSlug(movie.name, movie.year);
-        console.log('Slug для фильма', movie.name, ':', slug);
         return (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
             <Link to={`/movie/${slug}`} className="movieLink">
@@ -34,10 +31,16 @@ function MovieList() {
                       {movie.name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Год: {movie.year}
+                      Рік: {movie.year}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Режиссер: {movie.director}
+                      Режисер: {movie.director}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Тип: {movie.type}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Жанр: {movie.genre}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
